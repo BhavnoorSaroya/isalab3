@@ -17,7 +17,7 @@ class Server {
     getDateRoute(req, res) {
         const q = url.parse(req.url, true); // Parse query parameters
         res.writeHead(200, { 'Content-Type': 'text/html' });
-        const responseMessage = `${messages.HELLO} ${q.query['name'] || 'Guest'} ${messages.MAIN_MESSAGE} + ${this.dateModule.getCurrentDate()}`;
+        const responseMessage = `<span style="color:blue;">${messages.HELLO} ${q.query['name'] || 'Guest'} ${messages.MAIN_MESSAGE} + ${this.dateModule.getCurrentDate()}</span>`;
         res.end(responseMessage);
     }
 
