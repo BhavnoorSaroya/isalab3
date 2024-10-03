@@ -1,19 +1,19 @@
 // Import required modules
 const http = require('http');
 const url = require('url');
-const DateModule = require('./modules/utils.js'); // Import your DateModule class
-const messages = require('./lang/en/en.js').MESSAGES; // Import messages
-const FileHandler = require('./fileHandler/fileHandler'); // Import FileHandler class
+const DateModule = require('./modules/utils.js'); 
+const messages = require('./lang/en/en.js').MESSAGES; 
+const FileHandler = require('./fileHandler/fileHandler'); 
 
 // Define the Server class
 class Server {
     constructor(port) {
         this.port = port; // Initialize the port number
-        this.dateModule = new DateModule(); // Create an instance of DateModule
-        this.fileHandler = new FileHandler(); // Create an instance of FileHandler
+        this.dateModule = new DateModule(); 
+        this.fileHandler = new FileHandler(); 
     }
 
-    // Method to handle the /getDate route
+    
     getDateRoute(req, res) {
         const q = url.parse(req.url, true); // Parse query parameters
         res.writeHead(200, { 'Content-Type': 'text/html' });
@@ -63,7 +63,7 @@ class Server {
         if (parsedUrl.pathname === '/getDate') {
             this.getDateRoute(req, res); // Handle /getDate route
         } else if (parsedUrl.pathname.startsWith('/readFile')) {
-            this.readFileRoute(req, res); // Handle /readFile route with dynamic file name
+            this.readFileRoute(req, res); 
         } else if (parsedUrl.pathname === '/writeFile') {
             this.writeFileRoute(req, res); // Handle /writeFile route
         } else {
@@ -84,25 +84,4 @@ class Server {
 // Create a new instance of the Server class and start it
 const serverInstance = new Server(8888);
 serverInstance.start();
-
-
-
-
-// const http = require("http")
-// const server = require('./modules/utils.js')
-// const messages = require('./lang/en/en.js').MESSAGES
-// const url = require('url')
-
-
-
-// http.createServer(function (req, res) {
-
-//     const q =  url.parse(req.url, true)
-
-//     res.writeHead(200, {'Content-Type' : 'text/html'});
-    
-//     res.end(`${messages.HELLO} ${(q.query["name"])} ${messages.MAIN_MESSAGE} + ${server.Date()}`)
-// }).listen(8888)
-
-// console.log("server running and listening")
 
